@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+<style type="text/css">
+    th{
+        text-align:center;
+    }
+    td {
+        text-align: center;
+    }
+
+</style>
+
+<div class="jumbotron">
+    <p class="lead">
+            Hãy chăm sóc sức khỏe bản thân ngay từ bây giờ !
+        </p>
+    <img  class="img-responsive" style="width:100%" src="https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-medical-flat-simple-green-poster-background-image_161688.jpg" />
+    <br />
+    <p style="float:right"><a href="@Url.Action("Index","Trungtamyte")" class="btn btn-primary btn-lg"> Tra cứu trung tâm gần nhất &raquo;</a></p>
+</div>
+<br />
+<hr />
+<div class="row" style="width:1250px">
+    <div class="col-md-9">
+        <h3> Tin tức  nổi bật</h3>
+
+
+        <img style="width:100%" src="https://th.bing.com/th/id/OIP.J_rgDLKdUG92t6BTmqoogQHaFP?rs=1&pid=ImgDetMain" alt="" width="720" height="480" class="img-responsive" />
+        <h2> 5 việc cần làm tốt để phòng chống dịch COVID-19</h2>
+        <i>  Ngày 20/4/2020, Bộ Y tế - Báo Sức khỏe & Đời sống chính thức ra mắt 2 clip viral với nội dung tuyên truyền khuyến cáo của Ban chỉ đạo Quốc gia phòng chống dịch COVID-19 về 5 việc cần làm tốt và 7 thói quen cần thay đổi trong mùa dịch.  </i>
+            <br />
+            <a href=""> Xem chi tiết </a>
+      
+    </div>
+    <div class="col-md-3">
+        <h3>Tin trong ngày</h3>
+        <div class="">
+            <div>
+
+                <img src="https://baodanang.vn/dataimages/202009/original/images1578482_sxh.jpg" alt="" width="350" height="200" class="img-responsive" />
+                @* <i>Mota  </i>*@
+                <a href=""> <h5> Chủ động phòng bệnh sốt xuất huyết</h5> </a>
+                <br />
+
+            </div>
+            <div>
+
+                <img src="https://ruochau.com/wp-content/uploads/2020/07/H2thuc-pham-bo-sung-dinh-duong-cho-nguoi-gia.jpg" alt="" width="350" height="200" class="img-responsive" />
+                @* <i>Mota  </i>*@
+                <a href=""> <h5> 8 Nhóm thực phẩm bổ sung dinh dưỡng cho người già luôn khỏe mạnh</h5> </a>
+                <br />
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
