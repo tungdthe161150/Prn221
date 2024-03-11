@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,165 +10,187 @@ using WebAppYte.Models;
 
 namespace WebAppYte.Controllers
 {
-    public class LichKhamController : Controller
+    public class LichkhamController : Controller
     {
-        private readonly WebAppYteContext _context;
+        private WebAppYteContext db = new WebAppYteContext();
 
-        public LichKhamController(WebAppYteContext context)
+        // GET: Lichkham
+        public ActionResult Index(int? id, int? page)
         {
-            _context = context;
+            var lichKhams = db.LichKhams.Include(l => l.IdnguoiDungNavigation).Include(l => l.IdquanTriNavigation).
+                Where(h => h.IdnguoiDung == id).OrderByDescending(x => x.BatDau).ThenBy(x => x.IdlichKham);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            ViewBag.id = id;
+            return View(lichKhams);
         }
 
-        // GET: LichKham
-        public async Task<IActionResult> Index()
+        public ActionResult Dangxuly(int? id, int? page)
         {
-            var webAppYteContext = _context.LichKhams.Include(l => l.IdnguoiDungNavigation).Include(l => l.IdquanTriNavigation);
-            return View(await webAppYteContext.ToListAsync());
+            var lichKhams = db.LichKhams.Include(l => l.IdnguoiDungNavigation).Include(l => l.IdquanTriNavigation).
+                Where(h => h.IdnguoiDung == id && h.TrangThai == 0).OrderByDescending(x => x.BatDau).ThenBy(x => x.IdlichKham);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            ViewBag.id = id;
+            return View(lichKhams);
+        }
+        public ActionResult Daxacnhan(int? id, int? page)
+        {
+            var lichKhams = db.LichKhams.Include(l => l.IdnguoiDungNavigation).Include(l => l.IdquanTriNavigation).
+                Where(h => h.IdnguoiDung == id && h.TrangThai == 1).OrderByDescending(x => x.BatDau).ThenBy(x => x.IdlichKham);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            ViewBag.id = id;
+            return View(lichKhams);
+        }
+        public ActionResult Datuvanxong(int? id, int? page)
+        {
+            var lichKhams = db.LichKhams.Include(l => l.IdnguoiDungNavigation).Include(l => l.IdquanTriNavigation).
+                Where(h => h.IdnguoiDung == id && h.TrangThai == 2).OrderByDescending(x => x.BatDau).ThenBy(x => x.IdlichKham);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            ViewBag.id = id;
+            return View(lichKhams);
         }
 
-        // GET: LichKham/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Lichkham/Details/5
+        public ActionResult Details(int? id)
         {
-            if (id == null || _context.LichKhams == null)
+            if (id == null)
             {
                 return NotFound();
             }
-
-            var lichKham = await _context.LichKhams
-                .Include(l => l.IdnguoiDungNavigation)
-                .Include(l => l.IdquanTriNavigation)
-                .FirstOrDefaultAsync(m => m.IdlichKham == id);
+            LichKham lichKham = db.LichKhams.Find(id);
             if (lichKham == null)
             {
                 return NotFound();
             }
-
             return View(lichKham);
         }
 
-        // GET: LichKham/Create
-        public IActionResult Create()
+        // GET: Lichkham/Create
+        public ActionResult Create()
         {
-            ViewData["IdnguoiDung"] = new SelectList(_context.NguoiDungs, "IdnguoiDung", "IdnguoiDung");
-            ViewData["IdquanTri"] = new SelectList(_context.QuanTris, "IdquanTri", "IdquanTri");
+            ViewBag.IdnguoiDung = new SelectList(db.NguoiDungs, "IdnguoiDung", "HoTen");
+            ViewBag.IdquanTri = new SelectList(db.QuanTris.Where(n => n.VaiTro == 2), "IdquanTri", "HoTen");
             return View();
         }
 
-        // POST: LichKham/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Lichkham/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdlichKham,ChuDe,MoTa,BatDau,KetThuc,TrangThai,ZoomInfo,KetQuaKham,IdnguoiDung,IdquanTri")] LichKham lichKham)
+        public ActionResult Create([Bind("IdlichKham,ChuDe,MoTa,BatDau,KetThuc,TrangThai,ZoomInfo,KetQuaKham,IdnguoiDung,IdquanTri")] LichKham lichKham)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(lichKham);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                lichKham.TrangThai = 0;
+                db.LichKhams.Add(lichKham);
+                db.SaveChanges();
+                return RedirectToAction("Index", "LichKham", new { id = lichKham.IdnguoiDung });
             }
-            ViewData["IdnguoiDung"] = new SelectList(_context.NguoiDungs, "IdnguoiDung", "IdnguoiDung", lichKham.IdnguoiDung);
-            ViewData["IdquanTri"] = new SelectList(_context.QuanTris, "IdquanTri", "IdquanTri", lichKham.IdquanTri);
+
+            ViewBag.IdnguoiDung = new SelectList(db.NguoiDungs, "IdnguoiDung", "HoTen", lichKham.IdnguoiDung);
+            ViewBag.IDQuanTri = new SelectList(db.QuanTris, "IdquanTri", "HoTen", lichKham.IdquanTri);
             return View(lichKham);
         }
 
-        // GET: LichKham/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: Lichkham/Edit/5
+        public ActionResult Edit(int? id)
         {
-            if (id == null || _context.LichKhams == null)
+            if (id == null)
             {
                 return NotFound();
             }
-
-            var lichKham = await _context.LichKhams.FindAsync(id);
+            LichKham lichKham = db.LichKhams.Find(id);
             if (lichKham == null)
             {
                 return NotFound();
             }
-            ViewData["IdnguoiDung"] = new SelectList(_context.NguoiDungs, "IdnguoiDung", "IdnguoiDung", lichKham.IdnguoiDung);
-            ViewData["IdquanTri"] = new SelectList(_context.QuanTris, "IdquanTri", "IdquanTri", lichKham.IdquanTri);
+            ViewBag.IdnguoiDung = new SelectList(db.NguoiDungs, "IdnguoiDung", "HoTen", lichKham.IdnguoiDung);
+            ViewBag.IdquanTri = new SelectList(db.QuanTris, "IdquanTri", "TaiKhoan", lichKham.IdquanTri);
             return View(lichKham);
         }
 
-        // POST: LichKham/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Lichkham/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdlichKham,ChuDe,MoTa,BatDau,KetThuc,TrangThai,ZoomInfo,KetQuaKham,IdnguoiDung,IdquanTri")] LichKham lichKham)
+        public ActionResult Edit([Bind("IdlichKham,ChuDe,MoTa,BatDau,KetThuc,TrangThai,ZoomInfo,KetQuaKham,IdnguoiDung,IdquanTri")] LichKham lichKham)
         {
-            if (id != lichKham.IdlichKham)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(lichKham);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LichKhamExists(lichKham.IdlichKham))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                db.Entry(lichKham).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            ViewData["IdnguoiDung"] = new SelectList(_context.NguoiDungs, "IdnguoiDung", "IdnguoiDung", lichKham.IdnguoiDung);
-            ViewData["IdquanTri"] = new SelectList(_context.QuanTris, "IdquanTri", "IdquanTri", lichKham.IdquanTri);
+            ViewBag.IdnguoiDung = new SelectList(db.NguoiDungs, "IdnguoiDung", "HoTen", lichKham.IdnguoiDung);
+            ViewBag.IdquanTri = new SelectList(db.QuanTris, "IdquanTri", "TaiKhoan", lichKham.IdquanTri);
             return View(lichKham);
         }
 
-        // GET: LichKham/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Lichkham/Delete/5
+        public ActionResult Delete(int? id)
         {
-            if (id == null || _context.LichKhams == null)
+            if (id == null)
             {
                 return NotFound();
             }
-
-            var lichKham = await _context.LichKhams
-                .Include(l => l.IdnguoiDungNavigation)
-                .Include(l => l.IdquanTriNavigation)
-                .FirstOrDefaultAsync(m => m.IdlichKham == id);
+            LichKham lichKham = db.LichKhams.Find(id);
             if (lichKham == null)
             {
                 return NotFound();
             }
-
             return View(lichKham);
         }
 
-        // POST: LichKham/Delete/5
+        // POST: Lichkham/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            if (_context.LichKhams == null)
-            {
-                return Problem("Entity set 'WebAppYteContext.LichKhams'  is null.");
-            }
-            var lichKham = await _context.LichKhams.FindAsync(id);
-            if (lichKham != null)
-            {
-                _context.LichKhams.Remove(lichKham);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            LichKham lichKham = db.LichKhams.Find(id);
+            db.LichKhams.Remove(lichKham);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        private bool LichKhamExists(int id)
+       /* public JsonResult Lichdangluoi()
         {
-          return _context.LichKhams.Any(e => e.IdlichKham == id);
+            //db.Configuration.ProxyCreationEnabled = false;
+            List<LichKham> l = db.LichKhams.ToList();
+            // events = db.LichKhams.ToList();
+            var events = l.Select(ll => new
+            {
+                id = ll.IdlichKham,
+                title = ll.ChuDe,
+                start = ll.BatDau,
+                end = ll.KetThuc,
+            });
+            Console.WriteLine(events);
+            return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+*/
+        public ActionResult lichhen()
+        {
+            return View();
+
+        }
+        private static DateTime ConvertFromUnixTimestamp(double timestamp)
+        {
+            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return origin.AddSeconds(timestamp);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebAppYte.Models
 {
@@ -9,6 +10,7 @@ namespace WebAppYte.Models
         {
             BenhAns = new HashSet<BenhAn>();
         }
+       
 
         public int IdlichKham { get; set; }
         public string ChuDe { get; set; }

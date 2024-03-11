@@ -12,9 +12,37 @@
 <body>
 
     @using WebAppYte.Models
+
     @{
-        var u = Context.Session.GetString("user");
-        var userBS = Context.Session.GetString("userBS");
+        NguoiDung u = null;
+        try
+        {
+            var jsonString = Context.Session.GetString("user");
+            if (!string.IsNullOrEmpty(jsonString))
+            {
+                u = JsonConvert.DeserializeObject<NguoiDung>(jsonString);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception accordingly
+            Console.WriteLine($"Error during deserialization: {ex.Message}");
+        }
+        QuanTri userBS = null;
+        try
+        {
+            var jsonStringBS = Context.Session.GetString("userBS");
+            if (!string.IsNullOrEmpty(jsonStringBS))
+            {
+                userBS = JsonConvert.DeserializeObject<QuanTri>(jsonStringBS);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception accordingly
+            Console.WriteLine($"Error during deserialization of userBS: {ex.Message}");
+        }
+        //var userBS = Context.Session.GetString("userBS");
     }
 
 
@@ -39,6 +67,12 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">lich hen</a>
                             </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangky">ĐĂNG KÝ</a>
+
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangnhap">ĐĂNG NHẬP</a>
+
                         </ul>
                     </div>
                 </div>
@@ -76,11 +110,52 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                                 </li>
-                               
+
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">lich hen bs</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        ĐẶT LỊCH HẸN <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li>
+                                            <a class="nav-link text-dark" asp-route-id="@u.IdnguoiDung" asp-area="" asp-controller="LichKham" asp-action="Index">LỊCH HẸN CỦA BẠN</a>
+
+                                        <li><hr class="dropdown-divider" /></li>
+                                        <li>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="LichKham" asp-action="create" asp-route-id="@u.IdnguoiDung">ĐẶT LỊCH TƯ VẤN VIDEO</a>
+
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Bacsi" asp-action="Index">DANH SÁCH BÁC SĨ</a>
+                                </li>
                             </ul>
+                            @{
+                                if (u != null)
+                                {
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <a class="nav-link text-dark" asp-route-id="@u.IdnguoiDung" asp-area="" asp-controller="Nguoidung" asp-action="Details">Hồ sơ &nbsp; @u.TaiKhoan</a>
+
+                                        </li>
+                                        <li>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="DangXuat">Đăng Xuất</a>
+</li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="nav navbar-nav">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangky">ĐĂNG KÝ</a>
+
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangnhap">ĐĂNG NHẬP</a>
+
+                                    </ul>
+                                   
+                                }
+                            }
                         </div>
                     </div>
                 </nav>
@@ -99,10 +174,74 @@
         }
         else
         {
-            
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebAppYte</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Bacsi" asp-action="Quanlyhoidap">TRẢ LỜI CÂU HỎI</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-route-id="@userBS.IdquanTri" asp-area="" asp-controller="Bacsi" asp-action="Kiemtralichhen">LỊCH TƯ VẤN VIDEO</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Lichkham" asp-action="Chitiet">LỊCH HẸN KHÁM</a>
+                                </li>
+                             
+                            </ul>
+                            @{
+                                if (userBS != null)
+                                {
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <a class="nav-link text-dark" asp-route-id="@userBS.IdquanTri" asp-area="" asp-controller="Bacsi" asp-action="Details">Hồ sơ &nbsp; @userBS.TaiKhoan</a>
+
+                                        </li>
+                                        <li>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="DangXuatBs">Đăng Xuất</a></li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="nav navbar-nav">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangky">ĐĂNG KÝ</a>
+
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangnhap">ĐĂNG NHẬP</a>
+
+                                    </ul>
+                                   
+                                }
+                            }
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+
+            <footer class="border-top footer text-muted">
+                <div class="container">
+                    &copy; 2024 - WebAppYte - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+            </footer>
         }
     }
-   
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

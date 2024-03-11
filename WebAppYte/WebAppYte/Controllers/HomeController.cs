@@ -118,7 +118,18 @@ namespace Project_Prn221.Controllers
             ViewBag.IDTinh = new SelectList(db.TinhThanhs, "IDTinh", "TenTinh", nguoiDung.Idtinh);
             return View(nguoiDung);
         }
+        public ActionResult DangXuat()
+        {
+            HttpContext.Session.SetString("user", "");
+            return RedirectToAction("Index", "Home");
+        }
 
+        public ActionResult DangXuatBs()
+        {
+            HttpContext.Session.SetString("userBS", "");
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 
 }

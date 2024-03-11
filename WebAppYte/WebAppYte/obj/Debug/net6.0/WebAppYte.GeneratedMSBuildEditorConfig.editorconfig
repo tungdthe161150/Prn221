@@ -16,6 +16,42 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\ki7\PRN221\WebAppYte\WebAppYte
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Kiemtralichhen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcS2llbXRyYWxpY2hoZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Lichdangcho.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcTGljaGRhbmdjaG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Lichdaxacnhan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcTGljaGRheGFjbmhhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Quanlyhoidap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcUXVhbmx5aG9pZGFwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Traloicauhoi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcVHJhbG9pY2F1aG9pLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Xacnhanlichhen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcWGFjbmhhbmxpY2hoZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Home/Dangky.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYW5na3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
