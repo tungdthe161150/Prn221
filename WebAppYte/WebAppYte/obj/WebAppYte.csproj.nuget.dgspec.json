@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ki7\\PRN221\\WebAppYte\\WebAppYte\\WebAppYte.csproj": {}
+    "D:\\ki7\\zz\\Prn221\\WebAppYte\\WebAppYte\\WebAppYte.csproj": {}
   },
   "projects": {
-    "D:\\ki7\\PRN221\\WebAppYte\\WebAppYte\\WebAppYte.csproj": {
+    "D:\\ki7\\zz\\Prn221\\WebAppYte\\WebAppYte\\WebAppYte.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ki7\\PRN221\\WebAppYte\\WebAppYte\\WebAppYte.csproj",
+        "projectUniqueName": "D:\\ki7\\zz\\Prn221\\WebAppYte\\WebAppYte\\WebAppYte.csproj",
         "projectName": "WebAppYte",
-        "projectPath": "D:\\ki7\\PRN221\\WebAppYte\\WebAppYte\\WebAppYte.csproj",
+        "projectPath": "D:\\ki7\\zz\\Prn221\\WebAppYte\\WebAppYte\\WebAppYte.csproj",
         "packagesPath": "C:\\Users\\MSI Bravo\\.nuget\\packages\\",
-        "outputPath": "D:\\ki7\\PRN221\\WebAppYte\\WebAppYte\\obj\\",
+        "outputPath": "D:\\ki7\\zz\\Prn221\\WebAppYte\\WebAppYte\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

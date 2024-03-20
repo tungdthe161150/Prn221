@@ -9,121 +9,121 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebAppYte
 build_property.RootNamespace = WebAppYte
-build_property.ProjectDir = D:\ki7\PRN221\WebAppYte\WebAppYte\
+build_property.ProjectDir = D:\ki7\zz\Prn221\WebAppYte\WebAppYte\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\ki7\PRN221\WebAppYte\WebAppYte
+build_property.MSBuildProjectDirectory = D:\ki7\zz\Prn221\WebAppYte\WebAppYte
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Details.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Bacsi/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Edit.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Bacsi/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Index.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Bacsi/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Kiemtralichhen.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Bacsi/Kiemtralichhen.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcS2llbXRyYWxpY2hoZW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Lichdangcho.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Bacsi/Lichdangcho.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcTGljaGRhbmdjaG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Lichdaxacnhan.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Bacsi/Lichdaxacnhan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcTGljaGRheGFjbmhhbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Quanlyhoidap.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Bacsi/Quanlyhoidap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcUXVhbmx5aG9pZGFwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Traloicauhoi.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Bacsi/Traloicauhoi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcVHJhbG9pY2F1aG9pLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Bacsi/Xacnhanlichhen.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Bacsi/Xacnhanlichhen.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjc2lcWGFjbmhhbmxpY2hoZW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Home/Dangky.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Home/Dangky.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYW5na3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Home/Dangnhap.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Home/Dangnhap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYW5nbmhhcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Home/Index.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Home/Privacy.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/LichKham/Create.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/LichKham/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGljaEtoYW1cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/LichKham/Delete.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/LichKham/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGljaEtoYW1cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/LichKham/Details.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/LichKham/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGljaEtoYW1cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/LichKham/Edit.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/LichKham/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGljaEtoYW1cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/LichKham/Index.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/LichKham/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGljaEtoYW1cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/NguoiDung/Create.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/NguoiDung/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmd1b2lEdW5nXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/NguoiDung/Delete.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/NguoiDung/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmd1b2lEdW5nXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/NguoiDung/Details.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/NguoiDung/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmd1b2lEdW5nXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/NguoiDung/Edit.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/NguoiDung/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmd1b2lEdW5nXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/NguoiDung/Index.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/NguoiDung/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmd1b2lEdW5nXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Shared/Error.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/_ViewImports.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/_ViewStart.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ki7/PRN221/WebAppYte/WebAppYte/Views/Shared/_Layout.cshtml]
+[D:/ki7/zz/Prn221/WebAppYte/WebAppYte/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-qflui7ihh1
