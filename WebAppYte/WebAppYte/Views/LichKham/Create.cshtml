@@ -53,14 +53,22 @@
             @Html.LabelFor(model => model.ChuDe, " Lý do đặt lịch", htmlAttributes: new { @class = "control-label col-md-6" })
             <div class="col-md-6">
                 <textarea cols="50" data-val="true" data-val-length="The field Chủ đề must be a string with a maximum length of 100." data-val-length-max="100" htmlAttributes="{ class = form-control }"
-                          id="ChuDe" name="ChuDe" rows="10"></textarea>
+                          id="ChuDe" name="ChuDe" rows="2" required></textarea>
                 @Html.ValidationMessageFor(model => model.ChuDe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MoTa, " Mô tả chi tiết", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                <textarea cols="50" data-val="true" data-val-length="The field Chủ đề must be a string with a maximum length of 100." data-val-length-max="100" htmlAttributes="{ class = form-control }"
+                          id="MoTa" name="MoTa" rows="10"></textarea>
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-6" for="BatDau">Bắt đầu</label>
             <div class="col-md-6">
-                <input class="form-control text-box single-line" data-val="true" data-val-date="The field Bắt đầu must be a date." id="BatDau" name="BatDau" type="datetime-local" value="" />
+                <input class="form-control text-box single-line" data-val="true" data-val-date="The field Bắt đầu must be a date." id="BatDau" name="BatDau" type="datetime-local" value="" required />
                 <span class="field-validation-valid text-danger" data-valmsg-for="BatDau" data-valmsg-replace="true"></span>
             </div>
         </div>
@@ -73,9 +81,20 @@
 
 
     </div>
-    <div>
+    @*<div>
         <img src="~/images/images/covid.jpg" style="float:right" />
-    </div>
+    </div>*@
 
 }
 
+<script>
+    // Get the input element
+    var inputElement = document.getElementById('BatDau');
+
+    // Get the current date and time
+    var currentDate = new Date();
+    var currentDateString = currentDate.toISOString().slice(0, 16);
+
+    // Set the minimum value of the input to the current date and time
+    inputElement.min = currentDateString;
+</script>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebAppYte.Models.QuanTri>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout - Copy.cshtml";
+
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TaiKhoan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VaiTro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThongTinBacSi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrinhDo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnhBia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThongtinZoom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdkhoaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaiKhoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VaiTro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThongTinBacSi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrinhDo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnhBia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThongtinZoom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdkhoaNavigation.Idkhoa)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdquanTri">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdquanTri">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdquanTri">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

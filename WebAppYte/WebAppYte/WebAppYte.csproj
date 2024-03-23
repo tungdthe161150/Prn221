@@ -7,13 +7,58 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="wwwroot\css\main.css" />
+	  <Content Remove="wwwroot\js\bootstrap.min.js" />
+	  <Content Remove="wwwroot\js\jquery-3.2.1.min.js" />
+	  <Content Remove="wwwroot\js\main.js" />
+	  <Content Remove="wwwroot\js\plugins\bootstrap-datepicker.min.js" />
+	  <Content Remove="wwwroot\js\plugins\bootstrap-notify.min.js" />
+	  <Content Remove="wwwroot\js\plugins\chart.js" />
+	  <Content Remove="wwwroot\js\plugins\dataTables.bootstrap.min.js" />
+	  <Content Remove="wwwroot\js\plugins\fullcalendar.min.js" />
+	  <Content Remove="wwwroot\js\plugins\jquery-ui.custom.min.js" />
+	  <Content Remove="wwwroot\js\plugins\jquery.dataTables.min.js" />
+	  <Content Remove="wwwroot\js\plugins\jquery.vmap.min.js" />
+	  <Content Remove="wwwroot\js\plugins\jquery.vmap.sampledata.js" />
+	  <Content Remove="wwwroot\js\plugins\jquery.vmap.world.js" />
+	  <Content Remove="wwwroot\js\plugins\moment.min.js" />
+	  <Content Remove="wwwroot\js\plugins\pace.min.js" />
+	  <Content Remove="wwwroot\js\plugins\select2.min.js" />
+	  <Content Remove="wwwroot\js\plugins\sweetalert.min.js" />
+	  <Content Remove="wwwroot\js\popper.min.js" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.27" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.27">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.28" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.28">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+		<PackageReference Include="X.PagedList.Mvc.Core" Version="9.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\css\main.css" />
+	  <None Include="wwwroot\js\bootstrap.min.js" />
+	  <None Include="wwwroot\js\jquery-3.2.1.min.js" />
+	  <None Include="wwwroot\js\main.js" />
+	  <None Include="wwwroot\js\plugins\bootstrap-datepicker.min.js" />
+	  <None Include="wwwroot\js\plugins\bootstrap-notify.min.js" />
+	  <None Include="wwwroot\js\plugins\chart.js" />
+	  <None Include="wwwroot\js\plugins\dataTables.bootstrap.min.js" />
+	  <None Include="wwwroot\js\plugins\fullcalendar.min.js" />
+	  <None Include="wwwroot\js\plugins\jquery-ui.custom.min.js" />
+	  <None Include="wwwroot\js\plugins\jquery.dataTables.min.js" />
+	  <None Include="wwwroot\js\plugins\jquery.vmap.min.js" />
+	  <None Include="wwwroot\js\plugins\jquery.vmap.sampledata.js" />
+	  <None Include="wwwroot\js\plugins\jquery.vmap.world.js" />
+	  <None Include="wwwroot\js\plugins\moment.min.js" />
+	  <None Include="wwwroot\js\plugins\pace.min.js" />
+	  <None Include="wwwroot\js\plugins\select2.min.js" />
+	  <None Include="wwwroot\js\plugins\sweetalert.min.js" />
+	  <None Include="wwwroot\js\popper.min.js" />
 	</ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppYte", "WebAppYte\WebAppYte.csproj", "{B15DBF84-2AAC-4A9F-ABA1-E142523BC799}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppYte", "WebAppYte\WebAppYte.csproj", "{B15DBF84-2AAC-4A9F-ABA1-E142523BC799}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

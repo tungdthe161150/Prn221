@@ -6,18 +6,104 @@
     var nd = ViewData["user"] as WebAppYte.Models.NguoiDung;
 }
 <style type="text/css">
-    input#MatKhau {
-        width: 280px;
-        height: 34px
+    /* Reset CSS */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
+    /* Body */
     body {
-        background-color: #F6F6F6
+        font-family: Arial, sans-serif;
+        background-color: #f6f6f6;
     }
 
-    .h5fail {
-        color: red;
+    /* Container */
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
     }
+
+    /* Form */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group h4 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+    .form-control {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 0 10px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+
+    .form-control1 {
+        width: 360px;
+        height: 35px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 0 10px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+
+        .form-control1:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+    /* Button */
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        transition: background-color 0.3s;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+    /* Message */
+    .text-danger {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    /* Links */
+    .links {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+            .links a:hover {
+                text-decoration: underline;
+            }
+
 </style>
 
 <br />
@@ -56,7 +142,7 @@
                     <div class="form-group">
                         <h4>@Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "" })</h4>
                         <div class="">
-                            @Html.PasswordFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.PasswordFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control1" } })
                             @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -70,7 +156,6 @@
                     <div>
                         Bạn chưa có tài khoản?  @Html.ActionLink("ĐĂNG KÝ NGAY", "Dangky")
                         <br />
-                        Bạn quên mật khẩu ?  @Html.ActionLink("KHÔI PHỤC LẠI", "Dangnhap")
                     </div>
                 </div>
 

@@ -1,83 +1,236 @@
-﻿@model IEnumerable<WebAppYte.Models.LichKham>
+﻿@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<WebAppYte.Models.LichKham>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style type="text/css">
+    /* Reset CSS */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ChuDe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MoTa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BatDau)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KetThuc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrangThai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ZoomInfo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KetQuaKham)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdnguoiDungNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdquanTriNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChuDe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MoTa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BatDau)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KetThuc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrangThai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZoomInfo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KetQuaKham)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdnguoiDungNavigation.IdnguoiDung)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdquanTriNavigation.IdquanTri)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdlichKham">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdlichKham">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdlichKham">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    /* Body */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f6f6f6;
+    }
+
+    /* Container */
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th,
+        .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        /* Table Header */
+        .table th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+
+        /* Table Body */
+        .table td {
+            text-align: left;
+        }
+
+    /* Table Actions */
+    .table-actions a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+        .table-actions a:hover {
+            text-decoration: underline;
+        }
+
+</style>
+
+<div class="container">
+    <h1>Danh Sách Lịch Hẹn</h1>
+
+    <p>
+        <a asp-action="Create">ĐẶT LỊCH KHÁM</a>
+    </p>
+    <!-- Ô tìm kiếm -->
+    <div>
+        <label for="searchStatus">Tìm theo trạng thái:</label>
+        <select id="searchStatus">
+            <option value="">Tất cả</option>
+            <option value="Đang chờ xác nhận">Đang chờ xác nhận</option>
+            <option value="Đã xác nhận lịch">Đã xác nhận lịch</option>
+            <option value="Đã tư vấn xong">Đã tư vấn xong</option>
+            <option value="Từ chối lịch hẹn">Từ chối lịch hẹn</option>
+            <option value="Hủy">Hủy</option>
+        </select>
+        <button onclick="search()">Tìm</button>
+
+
+
+        <label for="searchHoTen">Tìm Kiếm:</label>
+        <input type="text" id="searchHoTen" placeholder="Nhập input...">
+        <button onclick="searchHoTen()">Tìm</button>
+    </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Lý do đặt lịch</th>
+                <th>Mô tả chi tiết</th>
+                <th>Bắt Đầu</th>
+                <th>Kết Thúc</th>
+                <th>Trạng Thái</th>
+                <th>Zoom</th>
+                <th>Kết Quả Khám</th>
+                <th>Bác Sĩ</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ChuDe)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MoTa)</td>
+                    <td>@Html.DisplayFor(modelItem => item.BatDau)</td>
+                    <td>@Html.DisplayFor(modelItem => item.KetThuc)</td>
+                    <td>
+                        @{
+                            string color = "red";
+                            string status = "";
+                            switch (item.TrangThai)
+                            {
+                                case 0:
+                                    color = "red";
+                                    status = "Đang chờ xác nhận";
+                                    break;
+                                case 1:
+                                    color = "orangered";
+                                    status = "Đã xác nhận lịch";
+                                    break;
+                                case 2:
+                                    color = "gold";
+                                    status = "Đã tư vấn xong";
+                                    break;
+                                case 3:
+                                    color = "darkgoldenrod";
+                                    status = "Từ chối lịch hẹn";
+                                    break;
+                                case 4:
+                                    color = "darkgoldenrod";
+                                    status = "Hủy";
+                                    break;
+                                default:
+                                    color = "red";
+                                    status = "Lỗi";
+                                    break;
+                            }
+                        }
+                        <h5 style="color:@color">@status</h5>
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.ZoomInfo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.KetQuaKham)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IdquanTriNavigation.HoTen)</td>
+
+                    <td class="table-actions">
+                        @{
+                            if (item.TrangThai == 0)
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.IdlichKham">Chỉnh Sửa</a>
+                                <a asp-action="Delete" asp-route-id="@item.IdlichKham">Xóa Lịch</a>
+                            }
+                            else if (item.TrangThai == 1)
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.IdlichKham">Chỉnh Sửa</a>
+                                <a asp-action="Delete" asp-route-id="@item.IdlichKham">Xóa Lịch</a>
+                            }
+                            else if (item.TrangThai == 2)
+                            {
+                                
+                            }
+                            else if (item.TrangThai == 3)
+                            {
+                            }
+                            else
+                            {
+                               
+                            }
+                        }
+                  @*      <a asp-action="Edit" asp-route-id="@item.IdlichKham">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.IdlichKham">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdlichKham">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+<!-- Kết thúc -->
+<script>
+    function search() {
+        var status = document.getElementById("searchStatus").value;
+        var rows = document.querySelectorAll(".table tbody tr");
+
+        rows.forEach(function (row) {
+            row.style.display = "none";
+            var rowStatus = row.querySelector("td:nth-child(5)").innerText.trim();
+            if (status === "" || rowStatus === status) {
+                row.style.display = "";
+            }
+        });
+    }
+    function searchHoTen() {
+        var input = document.getElementById("searchHoTen").value.toLowerCase();
+        var rows = document.querySelectorAll(".table tbody tr");
+
+        rows.forEach(function (row) {
+            var found = false;
+            row.style.display = "none";
+
+            // Check for a match in the ChuDe column (column 1)
+            var chuDeCell = row.querySelector("td:nth-child(1)");
+            var chuDeText = chuDeCell.textContent.toLowerCase();
+            if (chuDeText.includes(input) || input === "") {
+                found = true;
+            }
+
+            // Check for a match in the HoTen column (column 8)
+            var hoTenCell = row.querySelector("td:nth-child(8)");
+            var hoTenText = hoTenCell.textContent.toLowerCase();
+            if (hoTenText.includes(input) || input === "") {
+                found = true;
+            }
+
+            if (found) {
+                row.style.display = "";
+            }
+        });
+    }
+
+
+</script>

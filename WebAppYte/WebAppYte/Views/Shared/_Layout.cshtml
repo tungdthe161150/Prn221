@@ -42,6 +42,21 @@
             // Log or handle the exception accordingly
             Console.WriteLine($"Error during deserialization of userBS: {ex.Message}");
         }
+
+        QuanTri userAdmin = null;
+        try
+        {
+            var jsonStringBSs = Context.Session.GetString("userAdmin");
+            if (!string.IsNullOrEmpty(jsonStringBSs))
+            {
+                userAdmin = JsonConvert.DeserializeObject<QuanTri>(jsonStringBSs);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception accordingly
+            Console.WriteLine($"Error during deserialization of userBS: {ex.Message}");
+        }
         //var userBS = Context.Session.GetString("userBS");
     }
 
@@ -65,7 +80,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">lich hen</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Bacsi" asp-action="Index">DANH SÁCH BÁC SĨ</a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav">
@@ -85,7 +100,10 @@
         </div>
 
         <footer class="border-top footer text-muted">
-            <div class="container">
+            <div class="container" style="text-align:center">
+               Hotline:0123456789/
+                Hòa Lạc - Thạch Thất - Hà Nội/
+                Email: abc@gmail.com/
                 &copy; 2024 - WebAppYte - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
         </footer>
@@ -111,12 +129,10 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">lich hen bs</a>
-                                </li>
+                               
                                 <li class="nav-item">
                                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        ĐẶT LỊCH HẸN <b class="caret"></b>
+                                       MENU <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li>
@@ -124,7 +140,7 @@
 
                                         <li><hr class="dropdown-divider" /></li>
                                         <li>
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="LichKham" asp-action="create" asp-route-id="@u.IdnguoiDung">ĐẶT LỊCH TƯ VẤN VIDEO</a>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="LichKham" asp-action="create" asp-route-id="@u.IdnguoiDung">ĐẶT LỊCH KHÁM</a>
 
                                     </ul>
                                 </li>
@@ -167,7 +183,10 @@
             </div>
 
             <footer class="border-top footer text-muted">
-                <div class="container">
+                <div class="container" style="text-align:center">
+                    Hotline:0123456789/
+                    Hòa Lạc - Thạch Thất - Hà Nội/
+                    Email: abc@gmail.com/
                     &copy; 2024 - WebAppYte - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 </div>
             </footer>
@@ -190,14 +209,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                                 </li>
-                                <li class="nav-item">
+                             @*   <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Bacsi" asp-action="Quanlyhoidap">TRẢ LỜI CÂU HỎI</a>
+                                </li>*@
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-route-id="@userBS.IdquanTri" asp-area="" asp-controller="Bacsi" asp-action="Kiemtralichhen">LỊCH TƯ VẤN KHÁM BỆNH</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-route-id="@userBS.IdquanTri" asp-area="" asp-controller="Bacsi" asp-action="Kiemtralichhen">LỊCH TƯ VẤN VIDEO</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Lichkham" asp-action="Chitiet">LỊCH HẸN KHÁM</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Bacsi" asp-action="Index">DANH SÁCH BÁC SĨ</a>
                                 </li>
                              
                             </ul>
@@ -216,7 +235,7 @@
                                 else
                                 {
                                     <ul class="nav navbar-nav">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangky">ĐĂNG KÝ</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangky">ĐĂNG KÝ  </a>
 
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangnhap">ĐĂNG NHẬP</a>
 
@@ -235,7 +254,10 @@
             </div>
 
             <footer class="border-top footer text-muted">
-                <div class="container">
+                <div class="container" style="text-align:center">
+                    Hotline:0123456789/
+                    Hòa Lạc - Thạch Thất - Hà Nội/
+                    Email: abc@gmail.com/
                     &copy; 2024 - WebAppYte - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 </div>
             </footer>

@@ -4,81 +4,157 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style type="text/css">
+    /* Reset CSS */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-<div>
-    <h4>NguoiDung</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoTen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HoTen)
-        </dd>
-        <dt class = "col-sm-2">
+    /* Body */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f6f6f6;
+    }
+
+    /* Container */
+    .container1 {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading */
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Details */
+    .details {
+        margin-bottom: 20px;
+    }
+
+        .details h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .col-sm-2,
+    .col-sm-10 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .col-sm-2 {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+
+    .col-sm-10 {
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin-bottom: 10px;
+    }
+
+    /* Links */
+    .links a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="container1">
+    <h1>Details</h1>
+
+    <div class="Details">
+        <h4>Người Dùng</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+Họ Tên            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HoTen)
+            </dd>
+ <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DienThoai)
-        </dt>
+Điện Thoại        </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DienThoai)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TaiKhoan)
-        </dt>
+Tài Khoản        </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TaiKhoan)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MatKhau)
-        </dt>
+Mật Khẩu        </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MatKhau)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DiaChiCuThe)
-        </dt>
+            <dt class="col-sm-2">
+                Quê Quán
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IdtinhNavigation.TenTinh)
+            </dd>
+            <dt class = "col-sm-2">
+Địa chỉ cụ thể        </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DiaChiCuThe)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoCmnd)
-        </dt>
+Số CMND        </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.SoCmnd)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NhomMau)
-        </dt>
+Nhóm Máu        </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NhomMau)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ThongTinKhac)
-        </dt>
+Thông Tin Khác        </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ThongTinKhac)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdgioiTinhNavigation)
-        </dt>
+Giới Tính        </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdgioiTinhNavigation.IdgioiTinh)
+            @Html.DisplayFor(model => model.IdgioiTinhNavigation.GioiTinh1)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdtinhNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdtinhNavigation.Idtinh)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdnguoiDung">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+             </dl>
+    </div>
+
+    <div class="links">
+        <a asp-action="Edit" asp-route-id="@Model?.IdnguoiDung">Edit</a>
+    </div>
 </div>

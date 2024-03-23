@@ -1,7 +1,8 @@
 ﻿@using Newtonsoft.Json;
 @*@model PagedList.IPagedList<WebAppYte.Models.LichKham>
 @using PagedList.Mvc;*@
-@model IEnumerable<WebAppYte.Models.LichKham>
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<WebAppYte.Models.LichKham>
 
 @{
     ViewBag.Title = "Kiemtralichhen";
@@ -25,91 +26,157 @@
 <hr />
 <h2>DANH SÁCH LỊCH HẸN</h2>
 <hr />
-<h4>
+@*<h4>
     <a href="@Url.Action("Lichdangcho", "Bacsi", new { id = userBS.IdquanTri  })">LỊCH CHƯA XÁC NHẬN</a>&nbsp;||
     <a href="@Url.Action("Lichdaxacnhan", "Bacsi", new { id = userBS.IdquanTri  })">LỊCH ĐÃ XÁC NHẬN</a>&nbsp;||
     <a href="@Url.Action("Kiemtralichhen", "Bacsi", new { id = userBS.IdquanTri  })">TẤT CẢ LỊCH HẸN</a>
-</h4>
+</h4>*@
+<!-- Ô tìm kiếm -->
+<div>
+    <label for="searchStatus">Tìm theo trạng thái:</label>
+    <select id="searchStatus">
+        <option value="">Tất cả</option>
+        <option value="Đang chờ xác nhận">Đang chờ xác nhận</option>
+        <option value="Đã xác nhận lịch">Đã xác nhận lịch</option>
+        <option value="Đã tư vấn xong">Đã tư vấn xong</option>
+        <option value="Từ chối lịch hẹn">Từ chối lịch hẹn</option>
+        <option value="Hủy">Hủy</option>
+    </select>
+    <button onclick="search()">Tìm</button>
+</div>
+
+
 <br />
 <table class="table table-bordered">
-    <tr>
-        <th>
-            Người đặt lịch
-        </th>
-        @*<th>
-        Bác sĩ tư vấn
-        </th>*@
-        <th>
-            Nội dung cần tư vấn
-        </th>
-        @*<th>
-        Mô tả
-        </th>*@
-        <th>
-            Hẹn vào lúc
-        </th>
-        @*<th>
-        Kết thúc lúc
-        </th>*@
-        <th>
-            Trạng thái
-        </th>
-        <th>
-            Link ZOOM
-        </th>
-        <th>
-            Ghi chú tư vấn
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdnguoiDungNavigation.HoTen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChuDe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BatDau)
-            </td>
-            <td>
-                @{
-                    if (item.TrangThai == 0)
-                    {
-                        <h5 style="color:red">Đang chờ xác nhận. </h5>
-                    }
-                    else if (item.TrangThai == 1)
-                    {
-                        <h5 style="color:orangered">Đã xác nhận lịch </h5>
-                    }
-                    else if (item.TrangThai == 2)
-                    {
-                        <h5 style="color:gold">Đã tư vấn xong. </h5>
-                    }
-                    else
-                    {
-                        <h5 style="color:red">Lỗi </h5>
-                    }
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZoomInfo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KetQuaKham)
-            </td>
-            <td>
-                <a asp-action="Xacnhanlichhen" asp-route-id="@item.IdlichKham">Xác nhận</a>
-               
-            </td>
+            <th>
+                Người đặt lịch
+            </th>
+            @*<th>
+            Bác sĩ tư vấn
+            </th>*@
+            <th>
+                Nội dung cần tư vấn
+            </th>
+            @*<th>
+            Mô tả
+            </th>*@
+            <th>
+                Hẹn vào lúc
+            </th>
+            @*<th>
+            Kết thúc lúc
+            </th>*@
+            <th>
+                Trạng thái
+            </th>
+            <th>
+                ZOOM
+            </th>
+            <th>
+                Ghi chú tư vấn
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdnguoiDungNavigation.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChuDe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BatDau)
+                </td>
+                <td>
+                    @{
+                        if (item.TrangThai == 0)
+                        {
+                            <h5 style="color:red">Đang chờ xác nhận </h5>
+                        }
+                        else if (item.TrangThai == 1)
+                        {
+                            <h5 style="color:orangered">Đã xác nhận lịch </h5>
+                        }
+                        else if (item.TrangThai == 2)
+                        {
+                            <h5 style="color:gold">Đã tư vấn xong </h5>
+                        }
+                        else if (item.TrangThai == 3)
+                        {
+                            <h5 style="color:darkgoldenrod">Từ chối lịch hẹn </h5>
+                        }
+                        else if (item.TrangThai == 4)
+                        {
+                            <h5 style="color:darkgoldenrod">Hủy </h5>
+                        }
+                        else
+                        {
+                            <h5 style="color:red">Lỗi </h5>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZoomInfo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KetQuaKham)
+                </td>
+                <td>
+                    @{
+                        if (item.TrangThai == 0)
+                        {
+                            <a asp-action="Xacnhanlichhen" asp-route-id="@item.IdlichKham">Xác nhận</a>
+                        }
+                        else if (item.TrangThai == 1)
+                        {
+                        }
+                        else if (item.TrangThai == 2)
+                        {
+                        }
+                        else if (item.TrangThai == 3)
+                        {
+                        }
+                        else if (item.TrangThai == 4)
+                        {
+                        }
+                        else
+                        {
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+
 
 </table>
-   @* Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Kiemtralichhen",
-        new { page }))*@
+        new { page }))
+
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+<!-- Kết thúc -->
+<script>
+    function search() {
+        var status = document.getElementById("searchStatus").value;
+        var rows = document.querySelectorAll(".table tbody tr");
+
+        rows.forEach(function (row) {
+            row.style.display = "none";
+            var rowStatus = row.querySelector("td:nth-child(4)").innerText.trim();
+            if (status === "" || rowStatus === status) {
+                row.style.display = "";
+            }
+        });
+    }
+</script>

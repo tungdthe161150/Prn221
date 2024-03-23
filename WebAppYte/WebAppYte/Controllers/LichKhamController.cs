@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebAppYte.Models;
+using X.PagedList;
 
 namespace WebAppYte.Controllers
 {
@@ -17,12 +18,16 @@ namespace WebAppYte.Controllers
         // GET: Lichkham
         public ActionResult Index(int? id, int? page)
         {
-            var lichKhams = db.LichKhams.Include(l => l.IdnguoiDungNavigation).Include(l => l.IdquanTriNavigation).
-                Where(h => h.IdnguoiDung == id).OrderByDescending(x => x.BatDau).ThenBy(x => x.IdlichKham);
+            var lichKhams = db.LichKhams.Include(l => l.IdnguoiDungNavigation).Include(l => l.IdquanTriNavigation)
+                .Where(h => h.IdnguoiDung == id).OrderByDescending(x => x.BatDau).ThenBy(x => x.IdlichKham);
+
             int pageSize = 3;
             int pageNumber = (page ?? 1);
+
+            var lichKhamsPagedList = lichKhams.ToPagedList(pageNumber, pageSize);
+
             ViewBag.id = id;
-            return View(lichKhams);
+            return View(lichKhamsPagedList);
         }
 
         public ActionResult Dangxuly(int? id, int? page)
@@ -124,7 +129,7 @@ namespace WebAppYte.Controllers
             {
                 db.Entry(lichKham).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index" ,new { id = lichKham.IdnguoiDung });
             }
             ViewBag.IdnguoiDung = new SelectList(db.NguoiDungs, "IdnguoiDung", "HoTen", lichKham.IdnguoiDung);
             ViewBag.IdquanTri = new SelectList(db.QuanTris, "IdquanTri", "TaiKhoan", lichKham.IdquanTri);
@@ -154,7 +159,7 @@ namespace WebAppYte.Controllers
             LichKham lichKham = db.LichKhams.Find(id);
             db.LichKhams.Remove(lichKham);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = lichKham.IdnguoiDung });
         }
 
        /* public JsonResult Lichdangluoi()

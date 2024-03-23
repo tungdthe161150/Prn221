@@ -4,9 +4,44 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@using Newtonsoft.Json;
+@using WebAppYte.Models
+
+@{
+    NguoiDung u = null;
+    try
+    {
+        var jsonString = Context.Session.GetString("user");
+        if (!string.IsNullOrEmpty(jsonString))
+        {
+            u = JsonConvert.DeserializeObject<NguoiDung>(jsonString);
+        }
+    }
+    catch (Exception ex)
+    {
+        // Log or handle the exception accordingly
+        Console.WriteLine($"Error during deserialization: {ex.Message}");
+    }
+    QuanTri userBS = null;
+    try
+    {
+        var jsonStringBS = Context.Session.GetString("userBS");
+        if (!string.IsNullOrEmpty(jsonStringBS))
+        {
+            userBS = JsonConvert.DeserializeObject<QuanTri>(jsonStringBS);
+        }
+    }
+    catch (Exception ex)
+    {
+        // Log or handle the exception accordingly
+        Console.WriteLine($"Error during deserialization of userBS: {ex.Message}");
+    }
+    //var userBS = Context.Session.GetString("userBS");
+}
 <style>
     img {
-        margin-right: 20px;
+    margin-right: 20px;
     }
 </style>
 <center><h2>DANH SÁCH BÁC SỸ HỖ TRỢ</h2></center>
@@ -15,22 +50,64 @@
 
 <div class="row">
     <br />
-    @foreach (var item in Model)
+    @if (u == null && userBS == null)
     {
-        <div class="col-md-6">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
 
-            <img class="imgavt" src="https://www.murrayglass.com/wp-content/uploads/2020/10/avatar-scaled.jpeg" width="160" height="160" style="float:left" />
-            <br />
-            <b>Họ và tên: @item.HoTen</b>
-            <h4>Trình độ: @item.TrinhDo</h4>
-            <h4>Khoa: @item.IdkhoaNavigation.TenKhoa</h4>
-            <h4>Thông tin khác : @item.ThongTinBacSi</h4>
-            <hr />
-        </div>
+                <img class="imgavt" src="https://www.murrayglass.com/wp-content/uploads/2020/10/avatar-scaled.jpeg" width="160" height="160" style="float:left" />
+                <br />
+                <h5>Họ và tên: @item.HoTen</h5>
+                <h5>Trình độ: @item.TrinhDo</h5>
+                <h5>Khoa: @item.IdkhoaNavigation.TenKhoa</h5>
+                <h5>Thông tin khác : @item.ThongTinBacSi</h5>
+                <hr />
+            </div>
+        }
+
     }
-    <center>
-        <h3> <a href="@Url.Action("Index", "LichKham")">ĐẶT LỊCH TƯ VẤN VIDEO</a></h3>
-        <br />
-        <h3><a href="@Url.Action("Index", "Hoidap", new { id = @ViewBag.id })">GỬI CÂU HỎI CHO BÁC SĨ</a></h3>
-    </center>
+    else if (userBS != null)
+    {
+
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
+
+                <img class="imgavt" src="https://www.murrayglass.com/wp-content/uploads/2020/10/avatar-scaled.jpeg" width="160" height="160" style="float:left" />
+                <br />
+                <h5>Họ và tên: @item.HoTen</h5>
+                <h5>Trình độ: @item.TrinhDo</h5>
+                <h5>Khoa: @item.IdkhoaNavigation.TenKhoa</h5>
+                <h5>Thông tin khác : @item.ThongTinBacSi</h5>
+                <hr />
+            </div>
+        }
+    }
+    else
+    {
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
+
+                <img class="imgavt" src="https://www.murrayglass.com/wp-content/uploads/2020/10/avatar-scaled.jpeg" width="160" height="160" style="float:left" />
+                <br />
+                <h5>Họ và tên: @item.HoTen</h5>
+                <h5>Trình độ: @item.TrinhDo</h5>
+                <h5>Khoa: @item.IdkhoaNavigation.TenKhoa</h5>
+                <h5>Thông tin khác : @item.ThongTinBacSi</h5>
+                <hr />
+            </div>
+        }
+        <center>
+            <h3> 
+                @*<a href="@Url.Action("Index", "LichKham")">ĐẶT LỊCH KHÁM</a>*@
+                <a asp-action="Create" asp-controller="LichKham" asp-route-id="@u.IdnguoiDung">ĐẶT LỊCH KHÁM</a> |
+
+            </h3>
+            <br />
+        </center>
+    }
+   
 </div>

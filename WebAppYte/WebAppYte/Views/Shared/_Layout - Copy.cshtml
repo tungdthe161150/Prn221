@@ -1,0 +1,149 @@
+﻿@using Newtonsoft.Json;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebAppYte</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebAppYte.styles.css" asp-append-version="true" />
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .navbar {
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            margin-right: -1px;
+        }
+
+        .navbar-nav {
+            width: 100%;
+            text-align: center;
+            margin-top: 25%;
+        }
+
+            .navbar-nav > li {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+        .container {
+            padding-left: 220px; /* Adjust this value according to your navbar width */
+        }
+    </style>
+</head>
+<body>
+
+   @* @using WebAppYte.Models
+
+    @{
+        NguoiDung u = null;
+        try
+        {
+            var jsonString = Context.Session.GetString("user");
+            if (!string.IsNullOrEmpty(jsonString))
+            {
+                u = JsonConvert.DeserializeObject<NguoiDung>(jsonString);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception accordingly
+            Console.WriteLine($"Error during deserialization: {ex.Message}");
+        }
+        QuanTri userBS = null;
+        try
+        {
+            var jsonStringBS = Context.Session.GetString("userBS");
+            if (!string.IsNullOrEmpty(jsonStringBS))
+            {
+                userBS = JsonConvert.DeserializeObject<QuanTri>(jsonStringBS);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception accordingly
+            Console.WriteLine($"Error during deserialization of userBS: {ex.Message}");
+        }
+
+        QuanTri userAdmin = null;
+        try
+        {
+            var jsonStringBSs = Context.Session.GetString("userAdmin");
+            if (!string.IsNullOrEmpty(jsonStringBSs))
+            {
+                userAdmin = JsonConvert.DeserializeObject<QuanTri>(jsonStringBSs);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception accordingly
+            Console.WriteLine($"Error during deserialization of userBS: {ex.Message}");
+        }
+        //var userBS = Context.Session.GetString("userBS");
+    }*@
+    
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="nav navbar-nav">
+               @* @{
+                    if (userAdmin != null)
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a class="nav-link text-dark" >TK @userAdmin.TaiKhoan</a>
+
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="DangXuatBs">Đăng Xuất</a>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangky">ĐĂNG KÝ  </a>
+
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dangnhap">ĐĂNG NHẬP</a>
+
+                        </ul>
+
+                    }
+                }*@
+            </div>
+            <div class="nav navbar-nav">
+                <a class="navbar-brand" href="#"><h1>ADMIN DB</h1></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li>
+                    <a asp-action="index" asp-controller="userad">Người Dùng</a>
+                </li>
+                <li>
+                    <a asp-action="index" asp-controller="BS">Bác Sĩ</a>
+                </li>
+                <li>
+                    <a asp-action="index" asp-controller="LK">Lịch Khám</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

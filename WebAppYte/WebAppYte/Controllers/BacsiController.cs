@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 using WebAppYte.Models;
+using X.PagedList;
 
 namespace WebAppYte.Controllers
 {
@@ -25,15 +26,19 @@ namespace WebAppYte.Controllers
         {
             if (id == null)
             {
-                return  BadRequest();
+                return BadRequest();
             }
-            QuanTri quanTri = db.QuanTris.Find(id);
+
+            QuanTri quanTri = db.QuanTris.Include(q => q.IdkhoaNavigation).FirstOrDefault(q => q.IdquanTri == id);
+
             if (quanTri == null)
             {
                 return NotFound();
             }
+
             return View(quanTri);
         }
+
         // GET: Bacsi/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -46,7 +51,7 @@ namespace WebAppYte.Controllers
             {
                 return NotFound();
             }
-            ViewBag.IDKhoa = new SelectList(db.Khoas, "IDKhoa", "TenKhoa", quanTri.Idkhoa);
+            ViewBag.Idkhoa = new SelectList(db.Khoas, "Idkhoa", "TenKhoa", quanTri.Idkhoa);
             return View(quanTri);
         }
 
@@ -55,15 +60,15 @@ namespace WebAppYte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind("IDQuanTri,TaiKhoan,MatKhau,VaiTro,ThongTinBacSi,TrinhDo,IDKhoa,HoTen,AnhBia")] QuanTri quanTri)
+        public ActionResult Edit([Bind("IdquanTri,TaiKhoan,MatKhau,VaiTro,ThongTinBacSi,TrinhDo,Idkhoa,HoTen,AnhBia")] QuanTri quanTri)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(quanTri).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = quanTri.IdquanTri });
             }
-            ViewBag.IDKhoa = new SelectList(db.Khoas, "IDKhoa", "TenKhoa", quanTri.Idkhoa);
+            ViewBag.Idkhoa = new SelectList(db.Khoas, "Idkhoa", "TenKhoa", quanTri.Idkhoa);
             return View(quanTri);
         }
 
@@ -139,7 +144,7 @@ namespace WebAppYte.Controllers
             return View(hoiDap);
         }
 
-        public ActionResult Kiemtralichhen(int? page,int id)
+        public ActionResult Kiemtralichhen(int? page, int id)
         {
             // Check if db.LichKhams is not null
             if (db.LichKhams != null)
@@ -154,7 +159,7 @@ namespace WebAppYte.Controllers
                 int pageSize = 5;
                 int pageNumber = (page ?? 1);
 
-                return View(lich);
+                return View(lich.ToPagedList(pageNumber, pageSize));
             }
             else
             {
@@ -231,7 +236,7 @@ namespace WebAppYte.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Kiemtralichhen));
+                return RedirectToAction(nameof(Kiemtralichhen), new { id = lichKham.IdquanTri });
             }
             ViewData["IdnguoiDung"] = new SelectList(db.NguoiDungs, "IdnguoiDung", "HoTen", lichKham.IdnguoiDung);
             ViewData["IdquanTri"] = new SelectList(db.QuanTris, "IdquanTri", "HoTen", lichKham.IdquanTri);

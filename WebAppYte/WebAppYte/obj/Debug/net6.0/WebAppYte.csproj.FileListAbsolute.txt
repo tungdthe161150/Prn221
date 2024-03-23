@@ -496,3 +496,7 @@ D:\ki7\zz\Prn221\WebAppYte\WebAppYte\obj\Debug\net6.0\refint\WebAppYte.dll
 D:\ki7\zz\Prn221\WebAppYte\WebAppYte\obj\Debug\net6.0\WebAppYte.pdb
 D:\ki7\zz\Prn221\WebAppYte\WebAppYte\obj\Debug\net6.0\WebAppYte.genruntimeconfig.cache
 D:\ki7\zz\Prn221\WebAppYte\WebAppYte\obj\Debug\net6.0\ref\WebAppYte.dll
+D:\ki7\zz\Prn221\WebAppYte\WebAppYte\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout - Copy.cshtml.rz.scp.css
+D:\ki7\zz\Prn221\WebAppYte\WebAppYte\bin\Debug\net6.0\X.PagedList.dll
+D:\ki7\zz\Prn221\WebAppYte\WebAppYte\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll
+D:\ki7\zz\Prn221\WebAppYte\WebAppYte\obj\Debug\net6.0\WebAppYte.MvcApplicationPartsAssemblyInfo.cs

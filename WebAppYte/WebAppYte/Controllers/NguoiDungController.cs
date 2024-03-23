@@ -92,6 +92,7 @@ namespace WebAppYte.Controllers
         // POST: NguoiDung/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: NguoiDung/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdnguoiDung,HoTen,Email,DienThoai,TaiKhoan,MatKhau,IdgioiTinh,DiaChiCuThe,SoCmnd,Idtinh,NhomMau,ThongTinKhac")] NguoiDung nguoiDung)
@@ -119,12 +120,14 @@ namespace WebAppYte.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                // Redirect to Details action with the edited NguoiDung's ID
+                return RedirectToAction(nameof(Details), new { id = nguoiDung.IdnguoiDung });
             }
             ViewData["IdgioiTinh"] = new SelectList(_context.GioiTinhs, "IdgioiTinh", "IdgioiTinh", nguoiDung.IdgioiTinh);
             ViewData["Idtinh"] = new SelectList(_context.TinhThanhs, "Idtinh", "Idtinh", nguoiDung.Idtinh);
             return View(nguoiDung);
         }
+
 
         // GET: NguoiDung/Delete/5
         public async Task<IActionResult> Delete(int? id)

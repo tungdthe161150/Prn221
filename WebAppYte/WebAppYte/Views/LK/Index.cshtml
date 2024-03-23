@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebAppYte.Models.LichKham>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout - Copy.cshtml";
+
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChuDe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BatDau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KetThuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZoomInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KetQuaKham)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdnguoiDungNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdquanTriNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatDau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KetThuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZoomInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KetQuaKham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdnguoiDungNavigation.IdnguoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdquanTriNavigation.IdquanTri)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdlichKham">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdlichKham">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdlichKham">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

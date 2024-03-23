@@ -76,13 +76,13 @@ namespace Project_Prn221.Controllers
                     {
                         // Store admin information in session
                         HttpContext.Session.SetString("userAdmin", JsonConvert.SerializeObject(isloginAdmin));
-                        return RedirectToAction("QuanTris", "Admin");
+                        return RedirectToAction("Index", "HomeAdmin");
                     }
                     else if (isloginAdmin.VaiTro == 2)
                     {
                         // Store user information in session
                         HttpContext.Session.SetString("userBS", JsonConvert.SerializeObject(isloginAdmin));
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Details", "Bacsi", new { id = isloginAdmin.IdquanTri });
                     }
                 }
 
